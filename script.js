@@ -695,16 +695,36 @@ function init() {
   // Garante que a etapa 1 está ativa e as demais ocultas
   goToStep(1);
 
-  // Ativa validação em tempo real
+  // Ativa validação em tempo real nos inputs
   attachLiveValidation();
+
+  // CORREÇÃO: Faz o botão "Entendi — quero participar" avançar para a Etapa 2
+  // Ele procura por botões no painel 1 ou elementos que contenham o texto correto
+  const btnStart = document.querySelector('#panel-1 button, #panel-1 .btn') || 
+                   Array.from(document.querySelectorAll('button')).find(el => el.textContent.includes('participar'));
+  
+  if (btnStart) {
+    btnStart.addEventListener('click', (e) => {
+      e.preventDefault();
+      goToStep(2); // Avança para o formulário
+    });
+  }
 
   // Quando a etapa 4 é exibida, prepara o botão mailto
   // Intercepta o clique "Parece ótimo — Enviar" da etapa 3
-  const btnToStep4 = document.querySelector('#panel-3 .btn-primary');
+  const btnToStep4 = document.querySelector('#panel-3 .btn-primary') || 
+                     Array.from(document.querySelectorAll('button')).find(el => el.textContent.includes('Enviar') || el.textContent.includes('ótimo'));
   if (btnToStep4) {
-    btnToStep4.addEventListener('click', () => {
-      prepareStep4();
-    }, { once: false });
+    btnToStep4.addEventListener('click', (e) => {
+      e.preventDefault();
+      // Se estiver no painel do formulário (etapa 2), valida antes
+      if (state.currentStep === 2) {
+        validateAndPreview();
+      } else {
+        prepareStep4();
+        goToStep(4);
+      }
+    });
   }
 }
 
