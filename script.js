@@ -347,15 +347,20 @@ function checkMailtoSize(url) {
   toggleHidden('sizeSendWarning', !isTooBig);
 }
 
-function tryOpenMailto(url) {
-  if (!url || !url.startsWith('mailto:')) return false;
-  const link = document.createElement('a');
-  link.href  = url;
-  link.style.display = 'none';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  return true;
+function buildMailtoUrl(to, bcc, subject, body) {
+  const targetTo = to.join(',');
+  
+  // Usamos encodeURIComponent e trocamos manualmente eventuais codificações problemáticas
+  const targetSubject = encodeURIComponent(subject);
+  const targetBody = encodeURIComponent(body);
+  
+  let url = `mailto:${targetTo}?subject=${targetSubject}&body=${targetBody}`;
+  
+  if (bcc.length > 0) {
+    url += `&bcc=${encodeURIComponent(bcc.join(','))}`;
+  }
+
+  return url;
 }
 
 /* ================================================================
