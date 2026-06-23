@@ -9,6 +9,9 @@
 </head>
 <body>
 
+  <!-- ============================================================
+       CABEÇALHO
+  ============================================================ -->
   <header class="site-header" role="banner">
     <div class="container">
       <h1 class="site-title">Mobilização Cidadã: SUG 18/2026</h1>
@@ -16,6 +19,9 @@
     </div>
   </header>
 
+  <!-- ============================================================
+       BARRA DE PROGRESSO
+  ============================================================ -->
   <nav class="progress-bar" aria-label="Etapas do formulário" role="navigation">
     <div class="container">
       <ol class="steps" role="list">
@@ -42,9 +48,15 @@
     </div>
   </nav>
 
+  <!-- ============================================================
+       CONTEÚDO PRINCIPAL
+  ============================================================ -->
   <main class="main-content" id="main" role="main">
     <div class="container">
 
+      <!-- ──────────────────────────────────────────────────────
+            ETAPA 1 — ENTENDA O CONTEXTO
+      ────────────────────────────────────────────────────────── -->
       <section class="card step-panel active" id="panel-1" aria-labelledby="heading-step-1">
         <header class="card-header">
           <span class="step-badge" aria-hidden="true">Etapa 1 de 4</span>
@@ -83,13 +95,16 @@
         </div>
 
         <footer class="card-footer">
-          <button class="btn btn-primary" onclick="goToStep(2)">
+          <button class="btn btn-primary" id="btnStep1Next">
             Entendi — Quero participar
             <span class="btn-arrow" aria-hidden="true">→</span>
           </button>
         </footer>
       </section>
 
+      <!-- ──────────────────────────────────────────────────────
+            ETAPA 2 — PREENCHA SEUS DADOS
+      ────────────────────────────────────────────────────────── -->
       <section class="card step-panel" id="panel-2" aria-labelledby="heading-step-2" hidden>
         <header class="card-header">
           <span class="step-badge" aria-hidden="true">Etapa 2 de 4</span>
@@ -198,15 +213,18 @@
         </div>
 
         <footer class="card-footer card-footer--split">
-          <button class="btn btn-secondary" onclick="goToStep(1)">
+          <button class="btn btn-secondary" id="btnStep2Back">
             <span class="btn-arrow btn-arrow--left" aria-hidden="true">←</span> Voltar
           </button>
-          <button class="btn btn-primary" onclick="validateAndPreview()">
+          <button class="btn btn-primary" id="btnStep2Next">
             Gerar e-mail <span class="btn-arrow" aria-hidden="true">→</span>
           </button>
         </footer>
       </section>
 
+      <!-- ──────────────────────────────────────────────────────
+            ETAPA 3 — REVISE O E-MAIL
+      ────────────────────────────────────────────────────────── -->
       <section class="card step-panel" id="panel-3" aria-labelledby="heading-step-3" hidden>
         <header class="card-header">
           <span class="step-badge" aria-hidden="true">Etapa 3 de 4</span>
@@ -215,7 +233,7 @@
 
         <div class="card-body">
           <p class="form-notice">
-            Confira a estrutura antes do envio. <strong>Dica recomendada:</strong> Adicione uma frase curta e própria na linha inicial do texto ao abrir o seu gerenciador de e-mail para validar a autenticidade humana contra bloqueios automatizados.
+            Confira a estrutura antes do envio. <strong>Dica recomendada:</strong> Adicione uma frase corta e própria na linha inicial do texto ao abrir o seu gerenciador de e-mail para validar a autenticidade humana contra bloqueios automatizados.
           </p>
 
           <div class="email-meta" role="group" aria-label="Metadados do e-mail">
@@ -250,15 +268,18 @@
         </div>
 
         <footer class="card-footer card-footer--split">
-          <button class="btn btn-secondary" onclick="goToStep(2)">
+          <button class="btn btn-secondary" id="btnStep3Back">
             <span class="btn-arrow btn-arrow--left" aria-hidden="true">←</span> Voltar
           </button>
-          <button class="btn btn-primary" onclick="goToStep(4)">
+          <button class="btn btn-primary" id="btnStep3Next">
             Parece ótimo — Enviar <span class="btn-arrow" aria-hidden="true">→</span>
           </button>
         </footer>
       </section>
 
+      <!-- ──────────────────────────────────────────────────────
+            ETAPA 4 — ENVIE
+      ────────────────────────────────────────────────────────── -->
       <section class="card step-panel" id="panel-4" aria-labelledby="heading-step-4" hidden>
         <header class="card-header">
           <span class="step-badge" aria-hidden="true">Etapa 4 de 4</span>
@@ -302,7 +323,7 @@
             ✓ Conteúdo copiado para a área de transferência!
           </div>
 
-          <button class="btn btn-ghost btn-small" onclick="goToStep(1)" aria-label="Recomeçar do início">
+          <button class="btn btn-ghost btn-small" id="btnRestart" aria-label="Recomeçar do início">
             Recomeçar do início
           </button>
         </footer>
@@ -311,6 +332,9 @@
     </div>
   </main>
 
+  <!-- ============================================================
+       RODAPÉ
+  ============================================================ -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <p class="footer-text">
